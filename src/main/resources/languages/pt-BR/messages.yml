@@ -9,6 +9,7 @@ commands:
   search: Pesquisa no seu Guia o termo especificado
   open_guide: Abre o guia do Slimefun sem usar o livro
   stats: Mostra algumas estatísticas sobre um jogador
+  id: Obter o ID Slimefun do item na mão
   research:
     description: Desbloqueia/Redefine pesquisas para um jogador
     reset: '&cVocê redifiniu o Conhecimento de %player%'
@@ -19,16 +20,49 @@ commands:
     player-never-joined: 'Nenhum jogador com esse nome foi encontrado!'
     backpack-does-not-exist: '&4A mochila especificada não existe!'
     restored-backpack-given: '&aSua mochila foi restaurada e foi adicionada ao seu inventário!'
+    searching: '&eProcurando...'
   charge:
     description: Carrega o item que você está segurando
     charge-success: O item foi carregado!
     not-rechargeable: Este item não pode ser carregado!
+  timings:
+    description: Estatísticas de desempenho do Slimefun e addons
+    please-wait: '&eAguarde um momento... Os resultados estão chegando!'
+    verbose-player: '&4A flag verbose não pode ser usada por um jogador!'
+    unknown-flag: '&4Flag desconhecida: &c%flag%'
+  reload:
+    description: "Recarregar arquivo de configuração"
+    success: "&aArquivo de configuração recarregado com sucesso."
+    failed: "&cFalha ao recarregar configuração, pode ser necessário reiniciar o servidor para aplicar as mudanças."
   debug:
     description: 'Executar o log de depuração para os desenvolvedores'
     current: '&7Caso de teste atual: &6%test_case%'
     none-running: '&7Nenhum caso de teste está sendo feito!'
     running: '&7Executando modo de depuração com teste: &6%test%'
     disabled: '&7Modo de debug desabilitado.'
+  banitem:
+    description: Desabilitar item do Slimefun
+    success: '&aDesabilitado com sucesso'
+  unbanitem:
+    description: Habilitar item do Slimefun
+    success: '&aHabilitado com sucesso'
+  cleardata:
+    description: Limpar dados do mundo
+    success: '&aDados de &c{0} &ado tipo &c{1} &alimpados'
+    block: Bloco
+    oil: Petróleo
+    worldNotFound: '&cMundo não encontrado'
+    confirm: '&e Digite /sf cleardata <Mundo> <Tipo> confirm para confirmar &cEsta ação não pode ser desfeita!'
+  migrate:
+    description: "Migrar dados antigos"
+    confirm: "&cTem certeza que deseja migrar os dados? Digite /sf migrate confirm para iniciar\nNão deixe jogadores usarem máquinas do Slimefun durante a migração!"
+    started: "&aMigrando dados antigos..."
+    success: "&aDados antigos (%migrate_type%) migrados para o banco de dados com sucesso."
+    failed: "&cOcorreu um problema durante a migração, verifique o console."
+    already-migrated: "&aNenhum dado para migrar."
+    in-progress: "&aMigração em andamento..."
+  blockdata:
+    description: 'Manipular dados de bloco do Slimefun'
 placeholderapi:
   profile-loading: 'Carregando...'
 guide:
@@ -76,6 +110,24 @@ guide:
     translations:
       name: '&aHá algum idioma faltando?'
       lore: 'Clique aqui para adicionar seu próprio idioma'
+  options:
+    learning-animation:
+      enabled:
+        text:
+          - '&bAnimação de Aprendizado: &aSim'
+          - ''
+          - '&7Agora você pode escolher se vai'
+          - '&7ver no chat as informações sobre sua reflexão'
+          - '&7ao pesquisar um item.'
+        click: '&eClique para desativar sua animação de aprendizado'
+      disabled:
+        text:
+          - '&bAnimação de Aprendizado: &4Não'
+          - ''
+          - '&7Agora você pode escolher se vai'
+          - '&7ver no chat as informações sobre sua reflexão'
+          - '&7ao pesquisar um item.'
+        click: '&eClique para ativar sua animação de aprendizado'
   title:
     main: 'Guia do Slimefun'
     settings: 'Config & Info'
@@ -101,7 +153,10 @@ guide:
       wiki: '&3Editor(a) da Wiki'
       resourcepack: '&cArtista de ResourcePack'
       translator: '&9Tradutor(a)'
+actionbar:
+  radiation: '&6Nível de Exposição à Radiação: &c%level%&7/&e100'
 messages:
+  not-researched: '&4Você não tem conhecimento suficiente para entender isso. &cVocê precisa desbloquear &f"%item%&f"'
   not-enough-xp: '&4Você não tem XP suficiente para desbloquear isso!'
   unlocked: '&bVocê desbloqueou &7"%research%"&b.'
   only-players: '&4Este comando é apenas para jogadores'
@@ -122,12 +177,41 @@ messages:
   multimeter: '&bEnergia Armazenada: &3%stored% &b/ &3%capacity%'
   piglin-barter: '&4Você não pode negociar com piglins usando itens do Slimefun'
   bee-suit-slow-fall: '&eSuas Assas de Abelhas irão te ajudar a retornar ao chão em segurança e lentamente'
+  deprecated-item: '&4Este item foi descontinuado e será removido do Slimefun em breve.'
+  researching-is-disabled: '&cAs pesquisas foram desativadas neste servidor. Tudo já vem desbloqueado por padrão!'
+  await-deletion: '&cVocê não pode colocar um bloco do Slimefun tão rápido depois de quebrar um. Tente novamente em breve.'
+  android-no-permission: '&cSeu android está operando em uma área sem permissão, o android foi pausado automaticamente.'
+  invalid-item-in-hand: '&eVocê não está segurando um item do Slimefun!'
   multi-tool:
     mode-change: '&b%device% modo alterado para: &9%mode%'
     not-shears: '&cA Multi Tool não pode ser usada como tesoura!'
+  auto-crafting:
+    select-a-recipe: '&eAgache e Clique com o Botão Direito &7neste bloco com o item que deseja criar.'
+    recipe-set: '&aVocê definiu a receita desta máquina com sucesso.'
+    recipe-removed: '&eVocê removeu a receita desta máquina com sucesso. Você pode definir uma nova receita a qualquer momento!'
+    no-recipes: '&cNão encontramos nenhuma receita válida para o item que você está segurando.'
+    recipe-unavailable: |
+      &cEste item não pode ser usado. Pode ser que você não tenha desbloqueado, ou foi desabilitado pelo servidor.
+      &7Se você ainda não desbloqueou este item, desbloqueie-o primeiro antes de craftar.
+    missing-chest: '&cBaú ausente! Auto-Crafters precisam ser colocados acima de um baú.'
+    select: 'Selecionar esta receita'
+    temporarily-disabled: '&eEste Auto-Crafter foi desativado temporariamente. Você pode reativá-lo a qualquer momento!'
+    re-enabled: '&eEste Auto-Crafter foi reativado!'
+    tooltips:
+      enabled:
+      - '&aEsta receita está ativada atualmente'
+      - ''
+      - '&eClique Esquerdo &7para desativar temporariamente a receita'
+      - '&eClique Direito &7para remover esta receita'
+      disabled:
+      - '&cEsta receita está desativada atualmente'
+      - ''
+      - '&eClique Esquerdo &7para reativar esta receita'
+      - '&eClique Direito &7para remover esta receita'
   talisman:
     anvil: '&a&oSeu Talismã salvou sua ferramenta de quebrar.'
     miner: '&a&oSeu talismã dobrou os drops.'
+    farmer: '&a&oSeu talismã dobrou os drops.'
     hunter: '&a&oSeu talismã dobrou os minerios.'
     lava: '&a&oSeu talismã salvou você de queimar até a morte.'
     water: '&a&oSeu talismã salvou você de se afogar.'
@@ -140,6 +224,7 @@ messages:
     whirlwind: '&a&oSeu talismã refletiu o projétil.'
     wizard: '&a&oSeu talismã deu a você um nível de Fortuna melhor, mas talvez tenha diminuído alguns outros Níveis de Encantamento.'
     caveman: '&a&oSeu talismã te deu pressa'
+    wise: '&a&oSeu talismã dobrou seus drops de experiência'
   soulbound-rune:
     fail: '&cVocê pode vincular apenas um item à sua alma por vez.'
     success: '&aVocê vinculou com sucesso este item à sua alma! Você o manterá quando morrer.'
@@ -182,6 +267,9 @@ messages:
     - '&7Sempre olhe para o lado positivo da vida!'
     - '&7Este foi realmente um bolacha e não um biscoito'
     - '&7Os sinais de néon estão ILUMINADOS!'
+  above-limit-level: '&cNão é possível (des)encantar com um nível de encantamento maior que %level%!'
+  pickaxe-of-the-seeker:
+    no-ores: '&cNenhum minério encontrado nas proximidades!'
 machines:
   pattern-not-found: '&eDesculpe, não pude reconhecer esta receita. Coloque os itens no padrão correto no Ejetor.'
   unknown-material: '&eDesculpe, não pude reconhecer o item no meu ejetor. Por favor, coloque algo que eu sei.'
@@ -189,12 +277,14 @@ machines:
   full-inventory: '&eDesculpe, meu inventário está muito cheio!'
   in-use: '&cO inventário deste bloco está atualmente aberto por um jogador diferente.'
   ignition-chamber-no-flint: '&cEstá faltando uma Pederneira na Câmara de Ignição.'
+  inventory-empty: '&6Você montou a estrutura com sucesso! Coloque os itens na Dispensadora e clique com o botão direito novamente!'
   ANCIENT_ALTAR:
     not-enough-pedestals: '&4O altar não está rodeado pela quantidade necessária de pedestais &c(%pedestals% de 8)&4.'
     unknown-catalyst: '&4Catalisador desconhecido! &cUse a receita correta.'
     unknown-recipe: '&4Receita desconhecida! &cUse a receita correta.'
   ANCIENT_PEDESTAL:
     obstructed: '&4O pedestal está obstruído! &cRemova qualquer coisa acima do pedestal.'
+    in-use: '&4O pedestal ainda tem um item nele!'
   HOLOGRAM_PROJECTOR:
     enter-text: '&7Digite o nome do holograma no bate-papo. &r(Códigos de cores são suportados!)'
     inventory-title: 'Editor de Holograma'
@@ -203,6 +293,9 @@ machines:
     pick-a-floor: '&3- Escolha um andar -'
     current-floor: '&eEste é o andar em que você está atualmente:'
     click-to-teleport: '&eClique aqui &7para teleportar-se para o andar:'
+    enter-name: '&7Digite um nome para o seu andar no chat! &f(Códigos de cores são suportados!)'
+    named: '&2Seu andar agora se chama: &f%floor%'
+    editor-title: 'Configurações do Elevador'
   TELEPORTER:
     teleporting: '&3Teleportando-se...'
     teleported: '&3Teleportado(a)!'
@@ -218,6 +311,10 @@ machines:
     waypoints: 'Informação de Locais de Teleporte'
   CARGO_NODES:
     must-be-placed: '&4Deve ser colocado em um baú ou uma máquina!'
+    connected: '&2Conectado!'
+    not-connected: '&4Não conectado!'
+  TABLE_SAW:
+    no-slimefun-item: '&cVocê não pode usar itens Slimefun na Serra de Mesa!'
   INDUSTRIAL_MINER:
     no-fuel: '&aSua mineradora industrial ficou sem combustível! Coloque seu combustível no peito acima.'
     piston-facing: '&cSua Mineradora Industrial exige pistões para cima!'
@@ -234,17 +331,26 @@ brewing_stand:
   not-working: '&4Você não pode usar itens Slimefun em um Suporte de poções!'
 cartography_table:
   not-working: '&4Você não pode usar itens Slimefun em uma tabela de cartografia!'
+smithing_table:
+  not-working: '&4Você não pode usar itens Slimefun como material de ferraria!'
 villagers:
   no-trading: '&4Você não pode trocar itens Slimefun com os aldeões!'
 backpack:
   already-open: '&cEsta mochila já está aberta em outro lugar!'
   no-stack: '&cVocê não pode empilhar mochilas!'
+  set-name: '&bDigite um nome para a sua nova mochila no chat.'
+  not-backpack-owner: '&cVocê não é o dono desta mochila!'
+  not-original-item: '&cO item da mochila foi modificado, tente novamente.'
 workbench:
   not-enhanced: '&4Você não pode usar itens do Slimefun em uma bancada de trabalho normal.'
 cauldron:
   no-discoloring: '&4Você não pode descolorir uma Armadura do Slimefun'
+crafter:
+  not-working: '&4Você não pode usar um item do Slimefun no crafter!'
 gps:
   deathpoint: '&4Ponto de Morte &7%date%'
+  status-online: 'Online'
+  status-offline: 'Offline'
   waypoint:
     new: '&eDigite o nome do WayPoint no bate-papo. &7(Códigos de cores suportados!)'
     added: '&aNovo WayPoint adicionado com sucesso.'
@@ -264,6 +370,7 @@ android:
   scripts:
     already-uploaded: '&4Este script já foi enviado.'
     editor: 'Editor de Scripts'
+    too-long: '&cO script é muito longo para editar!'
     instructions:
       START: '&2Iniciar Script'
       REPEAT: '&9Repetir Script'
@@ -301,6 +408,28 @@ android:
     rating:
       own: '&4Você não pode avaliar seu próprio script!'
       already: '&4Você já avaliou este script!'
+  access-manager:
+    title: '&bGerenciador de Acesso do Android'
+    subtitle: '&8⇨ &7Clique para abrir o gerenciador'
+    menu:
+      add-player-title: '&aAdicionar Jogador Confiável'
+      add-player: '&aClique Esquerdo > Adicionar Jogador Confiável'
+      delete-player: '&cClique Esquerdo > Remover Jogador Confiável'
+    messages:
+      input: 'Digite o nome do jogador que deseja adicionar.'
+      cannot-find-player: '&cNão foi possível encontrar o jogador: %player%'
+      is-trusted-player: '&a%player% já é um jogador confiável!'
+      is-not-trusted-player: '&c%player% não é um jogador confiável!'
+      cannot-add-yourself: '&cVocê não pode adicionar a si mesmo!'
+      add-success: '&aJogador confiável %player% adicionado com sucesso.'
+      delete-success: '&aJogador confiável %player% removido com sucesso.'
+      reach-limit: '&cLimite de jogadores confiáveis atingido (10). Remova um antes de adicionar outro!'
+sf-cn:
+  timings:
+    started: '&aAnalisador de desempenho iniciado.'
+    running: '&aO analisador de desempenho está em execução, pare-o para ver os dados.'
+    stopped: '&aAnalisador de desempenho parado, veja o relatório em: &f{0}'
+    warning: '&cOcorreu um problema ao gerar o relatório de desempenho! Verifique o console para mais detalhes.'
 languages:
   default: 'Padrão do Servidor'
   en: 'Inglês'
@@ -342,4 +471,6 @@ languages:
   hr: 'Croatian'
   mk: 'Macedonian'
   sr: 'Serbian'
-  be: 'Belarusian'
+  be: 'Bielorrusso'
+  si-LK: 'Cingalês'
+  lt: 'Lituano'

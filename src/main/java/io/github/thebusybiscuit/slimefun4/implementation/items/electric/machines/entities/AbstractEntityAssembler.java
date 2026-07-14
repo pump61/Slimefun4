@@ -169,14 +169,20 @@ public abstract class AbstractEntityAssembler<T extends Entity> extends SimpleSl
         var blockData = StorageCacheUtils.getBlock(b.getLocation());
         String val;
         if (blockData == null || (val = blockData.getData(KEY_ENABLED)) == null || val.equals(String.valueOf(false))) {
-            menu.replaceExistingItem(22, new CustomItemStack(Material.GUNPOWDER, "&7是否可用: &4\u2718", "", "&e> 单击开启机器"));
+            menu.replaceExistingItem(
+                    22,
+                    new CustomItemStack(
+                            Material.GUNPOWDER, "&7Disponível: &4\u2718", "", "&e> Clique para ativar a máquina"));
             menu.addMenuClickHandler(22, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), KEY_ENABLED, String.valueOf(true));
                 updateBlockInventory(menu, b);
                 return false;
             });
         } else {
-            menu.replaceExistingItem(22, new CustomItemStack(Material.REDSTONE, "&7是否可用: &2\u2714", "", "&e> 单击关闭机器"));
+            menu.replaceExistingItem(
+                    22,
+                    new CustomItemStack(
+                            Material.REDSTONE, "&7Disponível: &2\u2714", "", "&e> Clique para desativar a máquina"));
             menu.addMenuClickHandler(22, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), KEY_ENABLED, String.valueOf(false));
                 updateBlockInventory(menu, b);
@@ -191,7 +197,11 @@ public abstract class AbstractEntityAssembler<T extends Entity> extends SimpleSl
         menu.replaceExistingItem(
                 31,
                 new CustomItemStack(
-                        Material.PISTON, "&7生成高度: &3" + offset + " 格方块高", "", "&f左键: &7+0.1", "&f右键: &7-0.1"));
+                        Material.PISTON,
+                        "&7Altura de geração: &3" + offset + " blocos",
+                        "",
+                        "&fClique esquerdo: &7+0.1",
+                        "&fClique direito: &7-0.1"));
         menu.addMenuClickHandler(31, (p, slot, item, action) -> {
             double offsetv =
                     NumberUtils.reparseDouble(Double.parseDouble(StorageCacheUtils.getData(b.getLocation(), KEY_OFFSET))
@@ -308,15 +318,25 @@ public abstract class AbstractEntityAssembler<T extends Entity> extends SimpleSl
     protected void constructMenu(BlockMenuPreset preset) {
         preset.addItem(
                 1,
-                new CustomItemStack(getHead(), "&7在此处放入头颅", "", "&f此处可以放入作为生成实体头颅的物品"),
+                new CustomItemStack(
+                        getHead(), "&7Coloque a cabeça aqui", "", "&fColoque o item que serve como cabeça da entidade"),
                 ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(
                 7,
-                new CustomItemStack(getBody(), "&7在此处放入组装原料", "", "&f此处可以放入作为生成实体躯干的物品"),
+                new CustomItemStack(
+                        getBody(),
+                        "&7Coloque os materiais de montagem aqui",
+                        "",
+                        "&fColoque o item que serve como corpo da entidade"),
                 ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(
                 13,
-                new CustomItemStack(Material.CLOCK, "&7冷却时间: &b30 秒", "", "&f这个机器需要半分钟的时间装配", "&f所以耐心等等吧!"),
+                new CustomItemStack(
+                        Material.CLOCK,
+                        "&7Tempo de recarga: &b30 segundos",
+                        "",
+                        "&fEssa máquina leva 30 segundos para montar",
+                        "&fSeja paciente!"),
                 ChestMenuUtils.getEmptyClickHandler());
     }
 

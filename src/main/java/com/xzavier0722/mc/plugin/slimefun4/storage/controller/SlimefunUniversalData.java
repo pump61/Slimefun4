@@ -38,7 +38,8 @@ public class SlimefunUniversalData extends ASlimefunDataContainer {
     @SneakyThrows
     public void setData(String key, String val) {
         if (UniversalDataTrait.isReservedKey(key)) {
-            throw new IllegalAccessException("不能修改当前受保护的方块数据键值对");
+            throw new IllegalAccessException(
+                    "Não é possível modificar este par de chave-valor de dados de bloco protegido");
         }
 
         super.setData(key, val);

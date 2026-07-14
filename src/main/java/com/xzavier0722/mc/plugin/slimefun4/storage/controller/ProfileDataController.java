@@ -220,7 +220,11 @@ public class ProfileDataController extends ADataController {
                 re[slot] = each.getItemStack(FieldKey.INVENTORY_ITEM);
             } catch (Exception e) {
                 re[slot] = null;
-                logger.log(Level.SEVERE, "无法反序列化玩家背包物品, 已替换为空气 [" + uuid + ":" + slot + "]", e);
+                logger.log(
+                        Level.SEVERE,
+                        "Não foi possível desserializar item da mochila do jogador, substituído por ar [" + uuid + ":"
+                                + slot + "]",
+                        e);
             }
         }
 

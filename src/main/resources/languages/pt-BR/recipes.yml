@@ -1,1 +1,200 @@
----
+slimefun:
+
+  multiblock:
+    name: 'Multibloco'
+    lore:
+    - 'Construa a estrutura mostrada'
+    - 'como exibido. Não é craftado.'
+
+  enhanced_crafting_table:
+    name: 'Mesa de Criação Aprimorada'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'em uma Mesa de Criação Aprimorada.'
+    - 'Uma Mesa de Criação normal não será suficiente!'
+
+  armor_forge:
+    name: 'Forja de Armaduras'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Forja de Armaduras'
+
+  grind_stone:
+    name: 'Pedra de Moagem'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Pedra de Moagem'
+
+  smeltery:
+    name: 'Fundição'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Fundição'
+
+  ore_crusher:
+    name: 'Triturador de Minérios'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Triturador de Minérios'
+
+  mob_drop:
+    name: 'Drop de Mob'
+    lore:
+    - 'Mate esse mob para'
+    - 'obter este item'
+
+  gold_pan:
+    name: 'Bacia de Garimpo'
+    lore:
+    - 'Use uma Bacia de Garimpo para'
+    - 'obter este item'
+
+  compressor:
+    name: 'Compressor'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Compressor'
+
+  pressure_chamber:
+    name: 'Câmara de Pressão'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Câmara de Pressão'
+
+  ore_washer:
+    name: 'Lavador de Minérios'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Lavador de Minérios'
+
+  juicer:
+    name: 'Espremedor'
+    lore:
+    - 'Crafte este suco como mostrado'
+    - 'usando um Espremedor'
+
+  magic_workbench:
+    name: 'Bancada Mágica'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Bancada Mágica'
+
+  ancient_altar:
+    name: 'Altar Ancestral'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Altar Ancestral.'
+    - 'Consulte o Altar Ancestral para mais informações'
+
+  heated_pressure_chamber:
+    name: 'Câmara de Pressão Aquecida'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Câmara de Pressão Aquecida'
+
+  food_fabricator:
+    name: 'Fabricador de Alimentos'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Fabricador de Alimentos'
+
+  food_composter:
+    name: 'Compostador de Alimentos'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Compostador de Alimentos'
+
+  freezer:
+    name: 'Freezer'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Freezer'
+
+  geo_miner:
+    name: 'Minerador GEO'
+    lore:
+    - 'Este item pode ser obtido'
+    - 'usando um Minerador GEO'
+
+  nuclear_reactor:
+    name: 'Reator Nuclear'
+    lore:
+    - 'Este item é um subproduto'
+    - 'do funcionamento de um Reator Nuclear'
+
+  oil_pump:
+    name: 'Bomba de Petróleo'
+    lore:
+    - 'Este item pode ser obtido'
+    - 'usando uma Bomba de Petróleo'
+
+  pickaxe_of_containment:
+    name: 'Picareta da Contenção'
+    lore:
+    - 'Este bloco pode ser obtido'
+    - 'minerando um Spawner com'
+    - 'a Picareta da Contenção'
+
+  refinery:
+    name: 'Refinaria'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Refinaria'
+
+  barter_drop:
+    name: 'Troca com Piglins'
+    lore:
+    - 'Troque com Piglins usando'
+    - 'Lingotes de Ouro para obter este item'
+
+minecraft:
+
+  shaped:
+    name: 'Receita de Criação com Forma'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'em uma Mesa de Criação normal.'
+    - 'A forma é importante.'
+
+  shapeless:
+    name: 'Receita de Criação sem Forma'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'em uma Mesa de Criação normal.'
+    - 'Esta receita não tem forma fixa.'
+
+  furnace:
+    name: 'Receita de Forno'
+    lore:
+    - 'Funda este item em um Forno'
+    - 'para criar o item desejado'
+
+  blasting:
+    name: 'Receita de Forno a Lenha'
+    lore:
+    - 'Funda este item em um Forno a Lenha'
+    - 'para criar o item desejado'
+
+  smoking:
+    name: 'Receita de Fumeiro'
+    lore:
+    - 'Funda este item em um Fumeiro'
+    - 'para criar o item desejado'
+
+  campfire:
+    name: 'Receita de Fogueira'
+    lore:
+    - 'Funda este item em uma Fogueira'
+    - 'para criar o item desejado'
+
+  stonecutting:
+    name: 'Receita de Cortador de Pedras'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando um Cortador de Pedras'
+
+  smithing:
+    name: 'Receita de Mesa de Ferraria'
+    lore:
+    - 'Crafte este item como mostrado'
+    - 'usando uma Mesa de Ferraria'

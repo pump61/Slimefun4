@@ -260,9 +260,14 @@ public class TickerTask implements Runnable {
             Slimefun.logger().log(Level.SEVERE, "X: {0} Y: {1} Z: {2} ({3})", new Object[] {
                 l.getBlockX(), l.getBlockY(), l.getBlockZ(), item.getId()
             });
-            Slimefun.logger().log(Level.SEVERE, "在过去的 4 个 Tick 中发生多次错误，该方块对应的机器已被停用。");
-            Slimefun.logger().log(Level.SEVERE, "请在 /plugins/Slimefun/error-reports/ 文件夹中查看错误详情。");
-            Slimefun.logger().log(Level.SEVERE, "如果你要向他人求助，请向他人发送上述错误报告文件,而不是发送这个窗口的截图");
+            Slimefun.logger()
+                    .log(Level.SEVERE, "Múltiplos erros nos últimos 4 ticks, a máquina neste bloco foi desativada.");
+            Slimefun.logger()
+                    .log(Level.SEVERE, "Verifique os detalhes do erro na pasta /plugins/Slimefun/error-reports/.");
+            Slimefun.logger()
+                    .log(
+                            Level.SEVERE,
+                            "Se precisar de ajuda, envie o arquivo de relatório de erros, não capturas de tela desta janela.");
             Slimefun.logger().log(Level.SEVERE, " ");
             bugs.remove(position);
 

@@ -151,7 +151,8 @@ public class ItemSetting<T> {
      * @return An error message which is displayed when this {@link ItemSetting} is misconfigured.
      */
     protected @Nonnull String getErrorMessage() {
-        return "请使用在 '" + defaultValue.getClass().getSimpleName() + "' 范围内的值!";
+        return "Use um valor dentro do intervalo permitido para '"
+                + defaultValue.getClass().getSimpleName() + "'!";
     }
 
     /**
@@ -175,15 +176,15 @@ public class ItemSetting<T> {
                 this.value = newValue;
             } else {
                 // @formatter:off
-                item.warn("发现在 Items.yml 中有无效的物品设置!"
-                        + "\n  在 \""
+                item.warn("Configuração de item inválida encontrada no Items.yml!"
+                        + "\n  Em \""
                         + item.getId()
                         + "."
                         + getKey()
                         + "\""
                         + "\n  "
                         + configuredValue
-                        + " 不是一个有效值!"
+                        + " não é um valor válido!"
                         + "\n"
                         + getErrorMessage());
                 // @formatter:on
@@ -195,16 +196,16 @@ public class ItemSetting<T> {
                     : configuredValue.getClass().getSimpleName();
 
             // @formatter:off
-            item.warn("发现在 Items.yml 中有无效的物品设置!"
-                    + "\n请只设置有效的值."
-                    + "\n  在 \""
+            item.warn("Configuração de item inválida encontrada no Items.yml!"
+                    + "\nUse apenas valores válidos."
+                    + "\n  Em \""
                     + item.getId()
                     + "."
                     + getKey()
                     + "\""
-                    + "\n  期望值为 \""
+                    + "\n  Esperado: \""
                     + defaultValue.getClass().getSimpleName()
-                    + "\" 但填写了: \""
+                    + "\" mas encontrado: \""
                     + found
                     + "\"");
             // @formatter:on

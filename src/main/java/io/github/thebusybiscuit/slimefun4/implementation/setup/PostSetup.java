@@ -29,7 +29,7 @@ public final class PostSetup {
     private PostSetup() {}
 
     public static void setupWiki() {
-        Slimefun.logger().log(Level.INFO, "加载 Wiki 页面...");
+        Slimefun.logger().log(Level.INFO, "Carregando páginas da Wiki...");
 
         WikiUtils.setupJson(Slimefun.instance(), (page) -> page.replace("#", "?id="));
     }
@@ -70,24 +70,25 @@ public final class PostSetup {
                 + " - #########################");
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GREEN
-                + "成功加载了 "
+                + "Carregados com sucesso "
                 + total
-                + " 个物品和 "
+                + " itens e "
                 + Slimefun.getRegistry().getResearches().size()
-                + " 个研究");
+                + " pesquisas");
         sender.sendMessage(ChatColor.GREEN
                 + "( "
                 + slimefunOnly
-                + " 物品来自本体, "
+                + " itens do núcleo, "
                 + (total - slimefunOnly)
-                + " 个物品来自 "
+                + " itens de "
                 + Slimefun.getInstalledAddons().size()
-                + " 扩展 )");
+                + " extensões )");
         sender.sendMessage("");
 
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GREEN + " - 源码:      https://github.com/SlimefunGuguProject/Slimefun4");
-        sender.sendMessage(ChatColor.GREEN + " - Bug 反馈:  https://github.com/SlimefunGuguProject/Slimefun4/issues");
+        sender.sendMessage(ChatColor.GREEN + " - Código-fonte:      https://github.com/SlimefunGuguProject/Slimefun4");
+        sender.sendMessage(
+                ChatColor.GREEN + " - Reportar bugs:  https://github.com/SlimefunGuguProject/Slimefun4/issues");
 
         sender.sendMessage("");
 

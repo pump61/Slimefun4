@@ -16,17 +16,17 @@ public enum AndroidFuelSource {
     /**
      * This {@link ProgrammableAndroid} runs on solid fuel, e.g. Wood or coal
      */
-    SOLID("", "&f这类机器人需要固态燃料", "&f例如煤, 原木等..."),
+    SOLID("", "&fEste android precisa de combustível sólido", "&fEx.: carvão, madeira..."),
 
     /**
      * This {@link ProgrammableAndroid} runs on liquid fuel, e.g. Fuel, Oil or Lava
      */
-    LIQUID("", "&f这类机器人需要液态燃料", "&f例如岩浆, 原油, 燃油等..."),
+    LIQUID("", "&fEste android precisa de combustível líquido", "&fEx.: lava, petróleo, óleo combustível..."),
 
     /**
      * This {@link ProgrammableAndroid} runs on nuclear fuel, e.g. Uranium
      */
-    NUCLEAR("", "&f这类机器人需要放射性燃料", "&f例如铀, 镎或钚铀混合氧化物核燃料");
+    NUCLEAR("", "&fEste android precisa de combustível nuclear", "&fEx.: urânio, neptúnio ou MOX");
 
     private final String[] lore;
 
@@ -41,6 +41,7 @@ public enum AndroidFuelSource {
      */
     @Nonnull
     public ItemStack getItem() {
-        return new CustomItemStack(HeadTexture.GENERATOR.getAsItemStack(), "&8\u21E9 &c燃料输入槽 &8\u21E9", lore);
+        return new CustomItemStack(
+                HeadTexture.GENERATOR.getAsItemStack(), "&8\u21E9 &cEntrada de Combustível &8\u21E9", lore);
     }
 }

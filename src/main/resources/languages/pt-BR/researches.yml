@@ -62,6 +62,7 @@ slimefun:
   water_talisman: Talismã de Água
   angel_talisman: Talismã do Anjo
   fire_talisman: Talismã de Fogo
+  wise_talisman: Talismã do Sábio
   lava_crystal: Situação de Fogo
   magician_talisman: Talismã do Mágico
   traveller_talisman: Talismã do Viajante
@@ -185,6 +186,7 @@ slimefun:
   cargo_basics: Noções Básicas de Carga
   cargo_nodes: Configuração de Carga
   electric_ingot_machines: Fabricação de Barras Elétricas
+  medium_tier_electric_ingot_machines: Fabricação de Barras Rápida
   high_tier_electric_ingot_machines: Fabricação de Barras Super Rápida
   automated_crafting_chamber: Criação Automatizada
   better_food_fabricator: Fabricação de Alimentos Atualizada
@@ -206,6 +208,7 @@ slimefun:
   better_heated_pressure_chamber: Câmara de Pressão Aquecida Atualizada
   elytra: Élitros
   special_elytras: Élitros Especiais
+  trident: Tridente
   electric_crucible: Cadinho Eletrificado
   better_electric_crucibles: Cadinhos Elétricos Melhores
   advanced_electric_smeltery: Fundidora Elétrica Avançada
@@ -246,4 +249,14 @@ slimefun:
   caveman_talisman: Talismã do Homem das Cavernas
   even_higher_tier_capacitors: Capacitores tier 3
   elytra_cap: Engrenagem de colisão
+  bee_armor: Armadura de Abelha
+  book_binder: Encadernação de Livros de Encantamento
+  auto_crafting: Criação Automática
+  produce_collector: Ordenha Automática
+  improved_generators: Geradores Melhorados
+  ingredients_and_cheese: Culinária Slimefun
+  medium_tier_auto_enchanting: Encantamento e Desencantamento Automático Rápido
+  portable_teleporter: Teletransporte de Qualquer Lugar
+  farmer_talisman: Talismã do Fazendeiro
+  rainbow_armor: Eu quero ver o arco-íris bem no céu
   energy_connectors: Fios de conexão

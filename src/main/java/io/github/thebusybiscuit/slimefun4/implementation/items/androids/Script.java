@@ -128,19 +128,19 @@ public final class Script {
     @Nonnull
     ItemStack getAsItemStack(@Nonnull ProgrammableAndroid android, @Nonnull Player p) {
         List<String> lore = new LinkedList<>();
-        lore.add("&7作者 &f" + getAuthor());
+        lore.add("&7Autor: &f" + getAuthor());
         lore.add("");
-        lore.add("&7下载量: &f" + getDownloads());
-        lore.add("&7评分: " + getScriptRatingPercentage());
+        lore.add("&7Downloads: &f" + getDownloads());
+        lore.add("&7Avaliação: " + getScriptRatingPercentage());
         lore.add("&a" + getUpvotes() + " \u263A &7| &4\u2639 " + getDownvotes());
         lore.add("");
-        lore.add("&e左键 &f下载脚本");
-        lore.add("&4(将会覆盖你现有的脚本!)");
+        lore.add("&eClique esquerdo &fBaixar script");
+        lore.add("&4(Isso vai sobrescrever seu script atual!)");
 
         if (canRate(p)) {
             lore.add("");
-            lore.add("&eShift + 左键 &f好评");
-            lore.add("&eShift + 右键 &f差评");
+            lore.add("&eShift + Clique esquerdo &fCurtir");
+            lore.add("&eShift + Clique direito &fNão curtir");
         }
 
         return new CustomItemStack(android.getItem(), "&b" + getName(), lore.toArray(new String[0]));

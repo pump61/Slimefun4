@@ -104,6 +104,7 @@ val buildVersion = version.toString()
 val gitBuildTime: String? = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
 
 configure<GitPropertiesPluginExtension> {
+    failOnNoGitDirectory = false
     keys = listOf(
         "git.build.time",
         "git.build.version",

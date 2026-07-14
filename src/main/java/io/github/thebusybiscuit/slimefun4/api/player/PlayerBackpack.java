@@ -41,7 +41,7 @@ import org.bukkit.persistence.PersistentDataType;
  * @see BackpackListener
  */
 public class PlayerBackpack extends SlimefunInventoryHolder {
-    public static final String LORE_OWNER = "&7所有者: ";
+    public static final String LORE_OWNER = "&7Dono: ";
     private static final String COLORED_LORE_OWNER = ChatColors.color(LORE_OWNER);
     private static final NamespacedKey KEY_BACKPACK_UUID = new NamespacedKey(Slimefun.instance(), "B_UUID");
     private static final NamespacedKey KEY_OWNER_UUID = new NamespacedKey(Slimefun.instance(), "OWNER_UUID");
@@ -366,7 +366,7 @@ public class PlayerBackpack extends SlimefunInventoryHolder {
      */
     private Inventory newInv() {
         return Bukkit.createInventory(
-                this, size, (name.isEmpty() ? "背包" : ChatColors.color(name + "&r")) + " [大小 " + size + "]");
+                this, size, (name.isEmpty() ? "Mochila" : ChatColors.color(name + "&r")) + " [Tamanho " + size + "]");
     }
 
     private void updateInv() {

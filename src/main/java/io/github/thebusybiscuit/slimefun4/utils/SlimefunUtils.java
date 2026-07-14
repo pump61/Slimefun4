@@ -60,7 +60,7 @@ import org.bukkit.persistence.PersistentDataType;
 public final class SlimefunUtils {
 
     private static final String NO_PICKUP_METADATA = "no_pickup";
-    private static final String SOULBOUND_LORE = ChatColor.GRAY + "灵魂绑定";
+    private static final String SOULBOUND_LORE = ChatColor.GRAY + "Vinculado à Alma";
 
     private SlimefunUtils() {}
 
@@ -475,6 +475,28 @@ public final class SlimefunUtils {
             @Nonnull ItemMeta sfitemMeta,
             boolean checkLore,
             boolean checkCustomModelCheck) {
+        /*
+         * Third-party plugins (e.g. AuraSkills' Alchemy skill) modify the duration/amplifier
+         * of potions and often tag on extra lore to reflect the bonus. Slimefun should only
+         * care that it's still fundamentally the same potion type, not that every NBT tag
+         * matches exactly. See https://github.com/Slimefun/Slimefun4/issues/4014
+         */
+        if (itemMeta instanceof PotionMeta potionMeta && sfitemMeta instanceof PotionMeta sfPotionMeta) {
+            if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20_5)) {
+                if (!potionMeta.hasBasePotionType() && !sfPotionMeta.hasBasePotionType()) {
+                    return true;
+                }
+
+                return potionMeta.hasBasePotionType()
+                        && sfPotionMeta.hasBasePotionType()
+                        && potionMeta.getBasePotionType().equals(sfPotionMeta.getBasePotionType());
+            } else if (SlimefunExtended.isAtLeast(1, 20, 2)) {
+                return potionMeta.getBasePotionType().equals(sfPotionMeta.getBasePotionType());
+            } else {
+                return potionMeta.getBasePotionData().equals(sfPotionMeta.getBasePotionData());
+            }
+        }
+
         if (itemMeta.hasDisplayName() != sfitemMeta.hasDisplayName()) {
             Debug.log(TestCase.CARGO_INPUT_TESTING, "  Comparing has display name failed");
             return false;
@@ -508,22 +530,6 @@ public final class SlimefunUtils {
                 return false;
             } else if (hasItemMetaCustomModelData != hasSfItemMetaCustomModelData) {
                 return false;
-            }
-        }
-
-        if (itemMeta instanceof PotionMeta potionMeta && sfitemMeta instanceof PotionMeta sfPotionMeta) {
-            if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20_5)) {
-                if (!potionMeta.hasBasePotionType() && !sfPotionMeta.hasBasePotionType()) {
-                    return true;
-                }
-
-                return potionMeta.hasBasePotionType()
-                        && sfPotionMeta.hasBasePotionType()
-                        && potionMeta.getBasePotionType().equals(sfPotionMeta.getBasePotionType());
-            } else if (SlimefunExtended.isAtLeast(1, 20, 2)) {
-                return potionMeta.getBasePotionType().equals(sfPotionMeta.getBasePotionType());
-            } else {
-                return potionMeta.getBasePotionData().equals(sfPotionMeta.getBasePotionData());
             }
         }
 

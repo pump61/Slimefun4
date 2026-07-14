@@ -112,15 +112,16 @@ public class ProduceCollector extends AContainer implements RecipeDisplayItem {
     public @Nonnull List<ItemStack> getDisplayRecipes() {
         List<ItemStack> displayRecipes = new ArrayList<>();
 
-        displayRecipes.add(new CustomItemStack(Material.BUCKET, null, "&f需要附近有 &b牛 &f才会生产"));
+        displayRecipes.add(new CustomItemStack(Material.BUCKET, null, "&fRequer &bVacas &fnearby para produzir"));
         displayRecipes.add(new ItemStack(Material.MILK_BUCKET));
 
         if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-            displayRecipes.add(new CustomItemStack(Material.BUCKET, null, "&f需要附近有 &b山羊 &f才会生产"));
+            displayRecipes.add(new CustomItemStack(Material.BUCKET, null, "&fRequer &bCabras &fnearby para produzir"));
             displayRecipes.add(new ItemStack(Material.MILK_BUCKET));
         }
 
-        displayRecipes.add(new CustomItemStack(Material.BOWL, null, "&f需要附近有 &b哞菇 &f才会生产"));
+        displayRecipes.add(
+                new CustomItemStack(Material.BOWL, null, "&fRequer &bCogumelo de Vaca &fnearby para produzir"));
         displayRecipes.add(new ItemStack(Material.MUSHROOM_STEW));
 
         return displayRecipes;

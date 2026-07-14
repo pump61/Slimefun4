@@ -23,21 +23,21 @@ final class StartupWarnings {
     @ParametersAreNonnullByDefault
     static void discourageCSCoreLib(Logger logger) {
         logger.log(Level.SEVERE, BORDER);
-        logger.log(Level.SEVERE, PREFIX + "你好像安装了 CS-CoreLib。");
+        logger.log(Level.SEVERE, PREFIX + "Parece que você instalou o CS-CoreLib.");
         logger.log(Level.SEVERE, PREFIX);
-        logger.log(Level.SEVERE, PREFIX + "自 2021/01/30 起就不再强制依赖 CS-CoreLib 了");
-        logger.log(Level.SEVERE, PREFIX + "你需要卸载 CS-CoreLib 才能让 Slimefun 正常运行。");
+        logger.log(Level.SEVERE, PREFIX + "O CS-CoreLib não é mais uma dependência obrigatória desde 2021/01/30");
+        logger.log(Level.SEVERE, PREFIX + "Você precisa desinstalar o CS-CoreLib para que o Slimefun funcione.");
         logger.log(Level.SEVERE, BORDER);
     }
 
     @ParametersAreNonnullByDefault
     static void invalidMinecraftVersion(Logger logger, String detectedVer, String slimefunVersion) {
         logger.log(Level.SEVERE, BORDER);
-        logger.log(Level.SEVERE, PREFIX + "Slimefun 加载失败!");
-        logger.log(Level.SEVERE, PREFIX + "你正在使用不支持的 Minecraft 版本!");
+        logger.log(Level.SEVERE, PREFIX + "Falha ao carregar o Slimefun!");
+        logger.log(Level.SEVERE, PREFIX + "Você está usando uma versão do Minecraft não suportada!");
         logger.log(Level.SEVERE, PREFIX);
-        logger.log(Level.SEVERE, PREFIX + "你正在使用 Minecraft {0}", detectedVer);
-        logger.log(Level.SEVERE, PREFIX + "但 Slimefun {0} 只支持以下版本:", slimefunVersion);
+        logger.log(Level.SEVERE, PREFIX + "Você está usando Minecraft {0}", detectedVer);
+        logger.log(Level.SEVERE, PREFIX + "Mas o Slimefun {0} suporta apenas:", slimefunVersion);
         logger.log(Level.SEVERE, PREFIX + "Minecraft {0}", String.join(" / ", Slimefun.getSupportedVersions()));
         logger.log(Level.SEVERE, BORDER);
     }
@@ -45,11 +45,11 @@ final class StartupWarnings {
     @ParametersAreNonnullByDefault
     static void invalidServerSoftware(Logger logger) {
         logger.log(Level.SEVERE, BORDER);
-        logger.log(Level.SEVERE, PREFIX + "Slimefun 加载失败!");
-        logger.log(Level.SEVERE, PREFIX + "我们不再支持 CraftBukkit 服务端了!");
+        logger.log(Level.SEVERE, PREFIX + "Falha ao carregar o Slimefun!");
+        logger.log(Level.SEVERE, PREFIX + "O CraftBukkit não é mais suportado!");
         logger.log(Level.SEVERE, PREFIX);
-        logger.log(Level.SEVERE, PREFIX + "你需要使用 Paper 或其分支的服务端");
-        logger.log(Level.SEVERE, PREFIX + "(我们推荐 Paper)");
+        logger.log(Level.SEVERE, PREFIX + "Você precisa usar Paper ou um fork dele");
+        logger.log(Level.SEVERE, PREFIX + "(recomendamos o Paper)");
         logger.log(Level.SEVERE, BORDER);
     }
 
@@ -58,13 +58,15 @@ final class StartupWarnings {
         int javaVersion = NumberUtils.getJavaVersion();
 
         logger.log(Level.WARNING, BORDER);
-        logger.log(Level.WARNING, PREFIX + "正在使用的 Java 版本 (Java {0}) 已过时.", javaVersion);
+        logger.log(Level.WARNING, PREFIX + "A versão do Java em uso (Java {0}) está desatualizada.", javaVersion);
         logger.log(Level.WARNING, PREFIX);
-        logger.log(Level.WARNING, PREFIX + "由于高版本 Minecraft 对 Java {0} 的强制依赖,", recommendedJavaVersion);
-        logger.log(Level.WARNING, PREFIX + "我们推荐您尽快升级到 Java {0}.", recommendedJavaVersion);
-        logger.log(Level.WARNING, PREFIX + "同时，为尽快使用到新版本 Java 带来的特性,");
-        logger.log(Level.WARNING, PREFIX + "Slimefun 也会在不久的将来依赖于 Java {0}.", recommendedJavaVersion);
-        logger.log(Level.WARNING, PREFIX + "为了不影响您以后的正常使用，请尽快更新!");
+        logger.log(
+                Level.WARNING, PREFIX + "Versões mais recentes do Minecraft exigem Java {0},", recommendedJavaVersion);
+        logger.log(
+                Level.WARNING, PREFIX + "recomendamos atualizar para Java {0} o quanto antes.", recommendedJavaVersion);
+        logger.log(Level.WARNING, PREFIX + "Além disso, para aproveitar os recursos do novo Java,");
+        logger.log(Level.WARNING, PREFIX + "o Slimefun também vai exigir Java {0} em breve.", recommendedJavaVersion);
+        logger.log(Level.WARNING, PREFIX + "Para não afetar o uso futuro, atualize o quanto antes!");
         logger.log(Level.WARNING, BORDER);
     }
 }

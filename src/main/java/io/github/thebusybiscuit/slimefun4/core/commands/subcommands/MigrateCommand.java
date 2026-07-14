@@ -32,20 +32,20 @@ public class MigrateCommand extends SubCommand {
                 Bukkit.getScheduler().runTaskAsynchronously(Slimefun.instance(), () -> {
                     try {
                         var status = PlayerProfileMigrator.getInstance().migrateData();
-                        sendMigrateStatus("玩家数据", sender, status);
+                        sendMigrateStatus("dados de jogadores", sender, status);
                     } catch (Exception e) {
                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
+                        plugin.getLogger().log(Level.WARNING, "Erro inesperado ao migrar dados", e);
                     }
                 });
 
                 Bukkit.getScheduler().runTaskAsynchronously(Slimefun.instance(), () -> {
                     try {
                         var status = BlockStorageMigrator.getInstance().migrateData();
-                        sendMigrateStatus("方块数据", sender, status);
+                        sendMigrateStatus("dados de blocos", sender, status);
                     } catch (Exception e) {
                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
+                        plugin.getLogger().log(Level.WARNING, "Erro inesperado ao migrar dados", e);
                     }
                 });
             } else {

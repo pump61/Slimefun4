@@ -356,6 +356,9 @@ villagers:
 backpack:
   already-open: '&cSorry, this Backpack is open somewhere else!'
   no-stack: '&cYou cannot stack Backpacks'
+  set-name: '&bPlease type a name for your new backpack in the chat.'
+  not-backpack-owner: '&cYou are not the owner of this backpack!'
+  not-original-item: '&cThe backpack item was modified, please try again.'
 
 workbench:
   not-enhanced: '&4You cannot use Slimefun items in a normal workbench'
