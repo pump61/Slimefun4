@@ -101,7 +101,9 @@ public abstract class Reactor extends AbstractEnergyProvider
             @Override
             public void newInstance(BlockMenu menu, Block b) {
                 var blockData = StorageCacheUtils.getBlock(b.getLocation());
-                if (blockData.getData(MODE) == null) {
+                // The block's data container can be null (not yet cached) or still loading
+                // asynchronously at this point, in which case getData()/setData() would throw.
+                if (blockData != null && blockData.isDataLoaded() && blockData.getData(MODE) == null) {
                     blockData.setData(MODE, ReactorMode.GENERATOR.toString());
                 }
 
@@ -315,8 +317,12 @@ public abstract class Reactor extends AbstractEnergyProvider
     protected ReactorMode getReactorMode(@Nonnull Location l) {
         ReactorMode mode = ReactorMode.GENERATOR;
 
+        // The block's data container can still be loading asynchronously at this point,
+        // in which case getData() would throw instead of returning null.
         var blockData = StorageCacheUtils.getDataContainer(l);
-        if (blockData != null && ReactorMode.PRODUCTION.toString().equals(blockData.getData(MODE))) {
+        if (blockData != null
+                && blockData.isDataLoaded()
+                && ReactorMode.PRODUCTION.toString().equals(blockData.getData(MODE))) {
             mode = ReactorMode.PRODUCTION;
         }
 

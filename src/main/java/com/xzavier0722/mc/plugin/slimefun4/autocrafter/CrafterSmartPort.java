@@ -73,7 +73,12 @@ public class CrafterSmartPort extends SlimefunItem {
             @Override
             public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
                 // Resume the ingredient count
-                String countStr = StorageCacheUtils.getData(b.getLocation(), "ingredientCount");
+                // The block's data container can still be loading asynchronously at this point,
+                // in which case getData() would throw instead of returning null.
+                var container = StorageCacheUtils.getDataContainer(b.getLocation());
+                String countStr = container != null && container.isDataLoaded()
+                        ? StorageCacheUtils.getData(b.getLocation(), "ingredientCount")
+                        : null;
                 if (countStr != null) {
                     menu.getItemInSlot(6).setAmount(Math.max(1, Integer.parseInt(countStr)));
                 }

@@ -167,8 +167,14 @@ public abstract class AbstractEntityAssembler<T extends Entity> extends SimpleSl
 
     private void updateBlockInventory(BlockMenu menu, Block b) {
         var blockData = StorageCacheUtils.getBlock(b.getLocation());
+        // The block's data container can be null (not yet cached) or still loading
+        // asynchronously at this point, in which case getData() would throw instead
+        // of returning null.
         String val;
-        if (blockData == null || (val = blockData.getData(KEY_ENABLED)) == null || val.equals(String.valueOf(false))) {
+        if (blockData == null
+                || !blockData.isDataLoaded()
+                || (val = blockData.getData(KEY_ENABLED)) == null
+                || val.equals(String.valueOf(false))) {
             menu.replaceExistingItem(
                     22,
                     new CustomItemStack(

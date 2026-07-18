@@ -53,6 +53,12 @@ public class CargoInputNode extends AbstractFilterNode {
         super.updateBlockMenu(menu, b);
 
         var blockData = StorageCacheUtils.getBlock(b.getLocation());
+        // The block's data container can be null (not yet cached) or still loading
+        // asynchronously at this point, in which case getData() would throw instead
+        // of returning null.
+        if (blockData == null || !blockData.isDataLoaded()) {
+            return;
+        }
         String roundRobinMode = blockData.getData(ROUND_ROBIN_MODE);
         if (roundRobinMode == null || roundRobinMode.equals(String.valueOf(false))) {
             menu.replaceExistingItem(
