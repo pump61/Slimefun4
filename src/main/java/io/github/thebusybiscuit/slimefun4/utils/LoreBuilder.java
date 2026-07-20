@@ -47,7 +47,7 @@ public final class LoreBuilder {
     }
 
     public static @Nonnull String machine(@Nonnull MachineTier tier, @Nonnull MachineType type) {
-        return tier + " " + type;
+        return tier.forType(type) + " " + type;
     }
 
     public static @Nonnull String speed(float speed) {
@@ -55,7 +55,7 @@ public final class LoreBuilder {
     }
 
     public static @Nonnull String powerBuffer(int power) {
-        return power(power, " Buffer");
+        return power(power, " de Buffer");
     }
 
     public static @Nonnull String powerPerSecond(int power) {

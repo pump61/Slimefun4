@@ -3,21 +3,27 @@ package io.github.thebusybiscuit.slimefun4.core.attributes;
 import javax.annotation.Nonnull;
 
 public enum MachineTier {
-    BASIC("&eBasic"),
-    AVERAGE("&6Average"),
-    MEDIUM("&aMedium"),
-    GOOD("&2Good"),
-    ADVANCED("&6Advanced"),
-    END_GAME("&4End-Game");
+    BASIC("&eBásico", "&eBásica"),
+    AVERAGE("&6Comum", "&6Comum"),
+    MEDIUM("&aMédio", "&aMédia"),
+    GOOD("&2Bom", "&2Boa"),
+    ADVANCED("&6Avançado", "&6Avançada"),
+    END_GAME("&4Final", "&4Final");
 
-    private final String prefix;
+    private final String prefixMasculine;
+    private final String prefixFeminine;
 
-    MachineTier(@Nonnull String prefix) {
-        this.prefix = prefix;
+    MachineTier(@Nonnull String prefixMasculine, @Nonnull String prefixFeminine) {
+        this.prefixMasculine = prefixMasculine;
+        this.prefixFeminine = prefixFeminine;
+    }
+
+    public String forType(@Nonnull MachineType type) {
+        return type.isFeminine() ? prefixFeminine : prefixMasculine;
     }
 
     @Override
     public String toString() {
-        return prefix;
+        return prefixMasculine;
     }
 }

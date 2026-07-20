@@ -152,6 +152,13 @@ public abstract class AGenerator extends AbstractEnergyProvider implements Machi
     @Override
     public int getGeneratedOutput(@Nonnull Location l, @Nonnull ASlimefunDataContainer data) {
         BlockMenu inv = StorageCacheUtils.getMenu(l);
+
+        // The block's data can still be loading asynchronously (StorageCacheUtils.getMenu
+        // already kicked off a load in that case) - skip this tick, the next one will have it.
+        if (inv == null) {
+            return 0;
+        }
+
         FuelOperation operation = processor.getOperation(l);
 
         if (operation != null) {
