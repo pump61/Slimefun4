@@ -20,10 +20,10 @@ slimefun:
     - 'usando uma Forja de Armaduras'
 
   grind_stone:
-    name: 'Pedra de Moagem'
+    name: 'Moedor de Pedra'
     lore:
     - 'Crafte este item como mostrado'
-    - 'usando uma Pedra de Moagem'
+    - 'usando uma Moedor de Pedra'
 
   smeltery:
     name: 'Fundição'

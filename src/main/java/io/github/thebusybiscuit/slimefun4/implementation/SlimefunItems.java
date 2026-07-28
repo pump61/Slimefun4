@@ -1106,7 +1106,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack GRANDMAS_WALKING_STICK = new SlimefunItemStack(
             "GRANDMAS_WALKING_STICK",
             Material.STICK,
-            "§x§C§C§C§C§B§BBaston da Vovó",
+            "§x§C§C§C§C§B§BBastão da Vovó",
             "",
             "&7Um bastão surpreendentemente poderoso",
             "&7pertencente a uma vovó muito especial.",
@@ -1117,7 +1117,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack GRANDPAS_WALKING_STICK = new SlimefunItemStack(
             "GRANDPAS_WALKING_STICK",
             Material.STICK,
-            "§x§C§C§C§C§B§BBaston do Vovô",
+            "§x§C§C§C§C§B§BBastão do Vovô",
             "",
             "&7O bastão do avô, ainda mais poderoso",
             "&7que o da vovó — ninguém sabe como.",
@@ -1198,7 +1198,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack SMELTERS_PICKAXE = new SlimefunItemStack(
             "SMELTERS_PICKAXE",
             Material.DIAMOND_PICKAXE,
-            "§x§F§F§D§D§0§0Picareta do Fundidor",
+            "§x§F§F§D§D§0§0Picareta de Fundição",
             "",
             "&7Picareta encantada que funde",
             "&7automaticamente o minério ao extrair.",
@@ -1209,7 +1209,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack LUMBER_AXE = new SlimefunItemStack(
             "LUMBER_AXE",
             Material.DIAMOND_AXE,
-            "§x§C§C§7§7§4§4Machado Lenhador",
+            "§x§C§C§7§7§4§4Machado do Lenhador",
             "",
             "&7Um machado encantado que derruba",
             "&7a árvore inteira de um só golpe.",
@@ -1253,7 +1253,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack PICKAXE_OF_THE_SEEKER = new SlimefunItemStack(
             "PICKAXE_OF_THE_SEEKER",
             Material.DIAMOND_PICKAXE,
-            "§x§2§1§6§6§2§5Picareta do Buscador",
+            "§x§2§1§6§6§2§5Picareta de Prospecção",
             "",
             "&7Picareta mágica que sempre aponta",
             "&7para o minério mais próximo.",
@@ -2044,7 +2044,7 @@ public final class SlimefunItems {
             "&7Circuito eletrônico simples capaz",
             "&7de controlar funções básicas.",
             "",
-            "&7Criada na Mesa de Trabalho Mágica",
+            "&7Criada na Bancada Mágica",
             "&7usando Cobre, Silício e Fio.",
             "",
             LoreBuilder.TIER_RARE);
@@ -2137,7 +2137,7 @@ public final class SlimefunItems {
             "&7Motor de propulsão construído",
             "&7com placas de aço de alta pressão.",
             "",
-            "&7Criado na Mesa de Trabalho Mágica",
+            "&7Criado na Bancada Mágica",
             "&7para uso em Jetpacks e voadores.",
             "",
             LoreBuilder.TIER_RARE);
@@ -2149,7 +2149,7 @@ public final class SlimefunItems {
             "&7Cristal que pulsa com energia",
             "&7pura, capaz de potencializar máquinas.",
             "",
-            "&7Criado na Mesa de Trabalho Mágica",
+            "&7Criado na Bancada Mágica",
             "&7combinando materiais raros.",
             "",
             LoreBuilder.TIER_RARE);
@@ -2162,7 +2162,7 @@ public final class SlimefunItems {
             "&7forjada a partir de ferro fundido.",
             "",
             "&7Criada com Ferro e Aço",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_COMMON);
     public static final SlimefunItemStack HOOK = new SlimefunItemStack(
@@ -2326,7 +2326,7 @@ public final class SlimefunItems {
             "&7permanente de média intensidade.",
             "",
             "&7Criado com Ferro e Flint and Steel",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     public static final SlimefunItemStack NECROTIC_SKULL = new SlimefunItemStack(
@@ -2350,7 +2350,7 @@ public final class SlimefunItems {
             "&7momento da morte de criaturas.",
             "",
             "&7Obtida do Crânio Necrótico na",
-            "&7Mesa de Trabalho Mágica.",
+            "&7Bancada Mágica.",
             "",
             LoreBuilder.TIER_EPIC);
     public static final SlimefunItemStack STRANGE_NETHER_GOO = new SlimefunItemStack(
@@ -2374,7 +2374,7 @@ public final class SlimefunItems {
             "&7campo magnético muito superior.",
             "",
             "&7Criado combinando Ímã e Fio de Cobre",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     public static final SlimefunItemStack HEATING_COIL = new SlimefunItemStack(
@@ -2838,7 +2838,7 @@ public final class SlimefunItems {
             "&7tão resistente quanto o aço.",
             "",
             "&7Criado fundindo Alumínio e Cobre",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Copper + Silver)	*/
@@ -2851,7 +2851,7 @@ public final class SlimefunItems {
             "&7com aparência dourada acinzentada.",
             "",
             "&7Criado fundindo Prata e Cobre",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Copper + Zinc)	*/
@@ -2871,7 +2871,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ALUMINUM_BRASS_INGOT = new SlimefunItemStack(
             "ALUMINUM_BRASS_INGOT",
             Material.GOLD_INGOT,
-            "&bLatão Aluminado",
+            "&bLiga de Latão Aluminado",
             "",
             "&7Liga de latão enriquecida com alumínio,",
             "&7mais resistente e mais leve.",
@@ -2903,7 +2903,7 @@ public final class SlimefunItems {
             "&7rara e cobiçada por artesãos lendários.",
             "",
             "&7Criado combinando Bronze, Prata",
-            "&7e Ouro na Mesa de Trabalho Mágica.",
+            "&7e Ouro na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Lead + Tin)	*/
@@ -2916,7 +2916,7 @@ public final class SlimefunItems {
             "&7para unir componentes metálicos.",
             "",
             "&7Criado fundindo Chumbo e Estanho",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Steel + Iron + Carbon)	*/
@@ -2929,14 +2929,14 @@ public final class SlimefunItems {
             "&7produzida sob temperaturas extremas.",
             "",
             "&7Fabricado combinando Aço e outros",
-            "&7lingotes na Mesa de Trabalho Mágica.",
+            "&7lingotes na Bancada Mágica.",
             "",
             LoreBuilder.TIER_EPIC);
     /* Alloy (Damascus Steel + Duralumin + Compressed Carbon + Aluminium Bronze) */
     public static final SlimefunItemStack HARDENED_METAL_INGOT = new SlimefunItemStack(
             "HARDENED_METAL_INGOT",
             Material.IRON_INGOT,
-            "&b&lMetal Endurecido",
+            "&b&lMetal Fortificado",
             "",
             "&7Liga densa forjada sob pressão",
             "&7extrema, quase indestrutível.",
@@ -2955,7 +2955,7 @@ public final class SlimefunItems {
             "&7combinando os metais mais nobres.",
             "",
             "&7Requer múltiplas ligas avançadas",
-            "&7forjadas na Mesa de Trabalho Mágica.",
+            "&7forjadas na Bancada Mágica.",
             "",
             LoreBuilder.TIER_EPIC);
     /*		Alloy (Iron + Silicon)		*/
@@ -2968,7 +2968,7 @@ public final class SlimefunItems {
             "&7na produção de aço elétrico.",
             "",
             "&7Criado combinando Ferro e Silício",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Iron + Gold)			*/
@@ -2981,7 +2981,7 @@ public final class SlimefunItems {
             "&7unindo resistência e elegância.",
             "",
             "&7Criado combinando Ferro e Ouro",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Redstone + Ferrosilicon)	*/
@@ -2994,7 +2994,7 @@ public final class SlimefunItems {
             "&7elétrica da Redstone.",
             "",
             "&7Criada combinando Ferro e Redstone",
-            "&7na Mesa de Trabalho Mágica.",
+            "&7na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     /*		Alloy (Iron + Copper)		*/
@@ -3299,7 +3299,7 @@ public final class SlimefunItems {
             "&7Diamante produzido artificialmente,",
             "&7idêntico ao natural em estrutura.",
             "",
-            "&7Criado na Mesa de Trabalho Mágica",
+            "&7Criado na Bancada Mágica",
             "&7usando Carbonado comprimido.",
             "",
             LoreBuilder.TIER_EPIC);
@@ -3311,7 +3311,7 @@ public final class SlimefunItems {
             "&7Esmeralda criada artificialmente",
             "&7com brilho intenso e pureza perfeita.",
             "",
-            "&7Criada na Mesa de Trabalho Mágica",
+            "&7Criada na Bancada Mágica",
             "&7usando Carbonado e materiais raros.",
             "",
             LoreBuilder.TIER_EPIC);
@@ -3323,7 +3323,7 @@ public final class SlimefunItems {
             "&7Gema azul criada artificialmente",
             "&7com a mesma pureza das naturais.",
             "",
-            "&7Criada na Mesa de Trabalho Mágica",
+            "&7Criada na Bancada Mágica",
             "&7usando Carbonado e outros materiais.",
             "",
             LoreBuilder.TIER_EPIC);
@@ -3400,7 +3400,7 @@ public final class SlimefunItems {
             "&7Talismã básico do Slimefun.",
             "&7Sem habilidades especiais.",
             "",
-            "&7Obtido na Mesa de Trabalho Mágica.",
+            "&7Obtido na Bancada Mágica.",
             "",
             LoreBuilder.TIER_COMMON);
     public static final SlimefunItemStack ENDER_TALISMAN = new SlimefunItemStack(
@@ -3563,7 +3563,7 @@ public final class SlimefunItems {
             "&7Cajado elemental básico que",
             "&7pode ser infundido com runas.",
             "",
-            "&7Criado na Mesa de Trabalho Mágica.",
+            "&7Criado na Bancada Mágica.",
             "",
             LoreBuilder.TIER_RARE);
     public static final SlimefunItemStack STAFF_WIND = new SlimefunItemStack(
@@ -3619,7 +3619,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack GRIND_STONE = new SlimefunItemStack(
             "GRIND_STONE",
             Material.DISPENSER,
-            "&bPedra de Moagem",
+            "&bMoedor de Pedra",
             "",
             "&7Mói itens em outros itens",
             "",
@@ -3635,7 +3635,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack MAKESHIFT_SMELTERY = new SlimefunItemStack(
             "MAKESHIFT_SMELTERY",
             Material.BLAST_FURNACE,
-            "&eFundição Improvisada",
+            "&eForja Improvisada",
             "",
             "&7Versão improvisada da Fundição",
             "&7que permite apenas",
@@ -3682,7 +3682,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack MAGIC_WORKBENCH = new SlimefunItemStack(
             "MAGIC_WORKBENCH",
             Material.CRAFTING_TABLE,
-            "&6Mesa de Trabalho Mágica",
+            "&6Bancada Mágica",
             "",
             "&7Infunde itens com energia mágica",
             "",
@@ -3717,7 +3717,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ENHANCED_CRAFTING_TABLE = new SlimefunItemStack(
             "ENHANCED_CRAFTING_TABLE",
             Material.CRAFTING_TABLE,
-            "&eMesa de Trabalho Aprimorada",
+            "&eBancada Aprimorada",
             "",
             "&7Uma Mesa de Trabalho comum não",
             "&7suporta essa quantidade de poder...",
@@ -3937,7 +3937,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack CARBONADO_EDGED_FURNACE = new SlimefunItemStack(
             "CARBONADO_EDGED_FURNACE",
             Material.FURNACE,
-            "&7Fornalha com Borda de Carbonado",
+            "&7Fornalha com Borda de Carbono",
             "",
             "&7Velocidade de Processamento: &e20x",
             "&7Eficiência de Combustível: &e10x",
@@ -4261,7 +4261,7 @@ public final class SlimefunItems {
             Material.FURNACE,
             "&cTriturador Elétrico de Minérios",
             "",
-            "&7Funciona como Triturador e Pedra de Moagem",
+            "&7Funciona como Triturador e Moedor de Pedra",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
             "&8\u21E8 &7Velocidade: 1x",
@@ -4273,7 +4273,7 @@ public final class SlimefunItems {
             Material.FURNACE,
             "&cTriturador Elétrico de Minérios &7(&eII&7)",
             "",
-            "&7Funciona como Triturador e Pedra de Moagem",
+            "&7Funciona como Triturador e Moedor de Pedra",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             "&8\u21E8 &7Velocidade: 4x",
@@ -4285,7 +4285,7 @@ public final class SlimefunItems {
             Material.FURNACE,
             "&cTriturador Elétrico de Minérios &7(&eIII&7)",
             "",
-            "&7Funciona como Triturador e Pedra de Moagem",
+            "&7Funciona como Triturador e Moedor de Pedra",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.speed(10),
@@ -5694,7 +5694,7 @@ public final class SlimefunItems {
             "&fColoque esta máquina em cima de um",
             "&fbaú ou similar para que ela crafteie",
             "&fqualquer item que possa ser feito em",
-            "&eMesa de Trabalho Aprimorada",
+            "&eBancada Aprimorada",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
             "&8\u21E8 &e\u26A1 &716 J/Item",

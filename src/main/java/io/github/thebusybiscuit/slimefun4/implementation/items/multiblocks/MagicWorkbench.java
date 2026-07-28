@@ -67,7 +67,7 @@ public class MagicWorkbench extends AbstractCraftingTable {
 
                     Bukkit.getPluginManager().callEvent(event);
                     if (!event.isCancelled() && SlimefunUtils.canPlayerUseItem(p, output, true)) {
-                        craft(inv, possibleDispener, p, b, event.getOutput());
+                        craft(inv, input, possibleDispener, p, b, event.getOutput());
                     }
 
                     return;
@@ -83,7 +83,7 @@ public class MagicWorkbench extends AbstractCraftingTable {
     }
 
     @ParametersAreNonnullByDefault
-    private void craft(Inventory inv, Block dispenser, Player p, Block b, ItemStack output) {
+    private void craft(Inventory inv, ItemStack[] recipe, Block dispenser, Player p, Block b, ItemStack output) {
         Inventory fakeInv = createVirtualInventory(inv);
         Inventory outputInv = findOutputInventory(output, dispenser, inv, fakeInv);
 
@@ -97,9 +97,17 @@ public class MagicWorkbench extends AbstractCraftingTable {
             }
 
             for (int j = 0; j < 9; j++) {
-                if (inv.getContents()[j] != null && inv.getContents()[j].getType() != Material.AIR) {
-                    if (inv.getContents()[j].getAmount() > 1) {
-                        inv.setItem(j, new CustomItemStack(inv.getContents()[j], inv.getContents()[j].getAmount() - 1));
+                ItemStack item = inv.getContents()[j];
+                if (item != null && item.getType() != Material.AIR) {
+                    // Bug fix: this used to always subtract exactly 1 per slot, silently
+                    // ignoring recipe[j].getAmount() - a recipe asking for more than 1 of
+                    // the same ingredient in a slot only ever consumed 1.
+                    ItemStack recipeItem = recipe[j];
+                    int amount =
+                            (recipeItem != null && recipeItem.getType() != Material.AIR) ? recipeItem.getAmount() : 1;
+                    int remaining = item.getAmount() - amount;
+                    if (remaining > 0) {
+                        inv.setItem(j, new CustomItemStack(item, remaining));
                     } else {
                         inv.setItem(j, null);
                     }
@@ -151,14 +159,23 @@ public class MagicWorkbench extends AbstractCraftingTable {
 
     private boolean isCraftable(Inventory inv, ItemStack[] recipe) {
         for (int j = 0; j < inv.getContents().length; j++) {
-            if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], true, true, false)) {
-                if (SlimefunItem.getByItem(recipe[j]) instanceof SlimefunBackpack) {
-                    if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], false, true, false)) {
+            ItemStack invItem = inv.getContents()[j];
+            ItemStack recipeItem = recipe[j];
+
+            if (!SlimefunUtils.isItemSimilar(invItem, recipeItem, true, true, false)) {
+                if (SlimefunItem.getByItem(recipeItem) instanceof SlimefunBackpack) {
+                    if (!SlimefunUtils.isItemSimilar(invItem, recipeItem, false, true, false)) {
                         return false;
                     }
                 } else {
                     return false;
                 }
+            } else if (recipeItem != null
+                    && recipeItem.getType() != Material.AIR
+                    && (invItem == null || invItem.getAmount() < recipeItem.getAmount())) {
+                // Bug fix: isItemSimilar() only checks type/meta, never stack size -
+                // a recipe asking for e.g. 10 of an ingredient was satisfied by just 1.
+                return false;
             }
         }
 

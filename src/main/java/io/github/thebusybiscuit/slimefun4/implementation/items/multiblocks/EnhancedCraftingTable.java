@@ -1,6 +1,5 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks;
 
-import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -61,7 +60,7 @@ public class EnhancedCraftingTable extends AbstractCraftingTable {
 
                     Bukkit.getPluginManager().callEvent(event);
                     if (!event.isCancelled() && SlimefunUtils.canPlayerUseItem(p, output, true)) {
-                        craft(inv, possibleDispenser, p, b, event.getOutput());
+                        craft(inv, input, possibleDispenser, p, b, event.getOutput());
                     }
 
                     return;
@@ -76,7 +75,7 @@ public class EnhancedCraftingTable extends AbstractCraftingTable {
         }
     }
 
-    private void craft(Inventory inv, Block dispenser, Player p, Block b, ItemStack output) {
+    private void craft(Inventory inv, ItemStack[] recipe, Block dispenser, Player p, Block b, ItemStack output) {
         Inventory fakeInv = createVirtualInventory(inv);
         Inventory outputInv = findOutputInventory(output, dispenser, inv, fakeInv);
 
@@ -93,14 +92,25 @@ public class EnhancedCraftingTable extends AbstractCraftingTable {
 
             for (int j = 0; j < 9; j++) {
                 ItemStack item = inv.getContents()[j];
+                ItemStack recipeItem = recipe[j];
+                // Bug fix: this used to always consume exactly 1 per slot, silently
+                // ignoring recipeItem.getAmount() - any recipe asking for more than 1
+                // of the same ingredient in a slot only ever consumed 1.
+                int amount = (recipeItem != null && recipeItem.getType() != Material.AIR) ? recipeItem.getAmount() : 1;
 
                 if (item != null && item.getType() != Material.AIR) {
                     var consumed =
-                            Slimefun.getItemStackService().consume(item, 1, true, ConsumeContext.VIRTUAL_CRAFTING);
+                            Slimefun.getItemStackService().consume(item, amount, true, ConsumeContext.VIRTUAL_CRAFTING);
                     if (consumed.handled()) {
                         inv.setItem(j, consumed.item());
                     } else {
-                        ItemUtils.consumeItem(item, true);
+                        int remaining = item.getAmount() - amount;
+                        if (remaining > 0) {
+                            item.setAmount(remaining);
+                            inv.setItem(j, item);
+                        } else {
+                            inv.setItem(j, null);
+                        }
                     }
                 }
             }
@@ -116,14 +126,23 @@ public class EnhancedCraftingTable extends AbstractCraftingTable {
 
     private boolean isCraftable(Inventory inv, ItemStack[] recipe) {
         for (int j = 0; j < inv.getContents().length; j++) {
-            if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], true, true, false, false)) {
-                if (SlimefunItem.getByItem(recipe[j]) instanceof SlimefunBackpack) {
-                    if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], false, true, false, false)) {
+            ItemStack invItem = inv.getContents()[j];
+            ItemStack recipeItem = recipe[j];
+
+            if (!SlimefunUtils.isItemSimilar(invItem, recipeItem, true, true, false, false)) {
+                if (SlimefunItem.getByItem(recipeItem) instanceof SlimefunBackpack) {
+                    if (!SlimefunUtils.isItemSimilar(invItem, recipeItem, false, true, false, false)) {
                         return false;
                     }
                 } else {
                     return false;
                 }
+            } else if (recipeItem != null
+                    && recipeItem.getType() != Material.AIR
+                    && (invItem == null || invItem.getAmount() < recipeItem.getAmount())) {
+                // Bug fix: isItemSimilar() only checks type/meta, never stack size -
+                // a recipe asking for e.g. 10 of an ingredient was satisfied by just 1.
+                return false;
             }
         }
         return true;
