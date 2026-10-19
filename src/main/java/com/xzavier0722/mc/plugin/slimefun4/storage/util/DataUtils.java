@@ -66,7 +66,10 @@ public class DataUtils {
         try {
             var result = ItemStackDataCodec.deserialize(itemData);
 
-            Debug.log(TestCase.BACKPACK, "Deserialized itemstack: " + result);
+            // 只在调试开启时拼接: ItemStack#toString 会在读取线程调用 getItemMeta, 与主线程竞争 CraftRegistry 缓存
+            if (Debug.hasTestCase(TestCase.BACKPACK)) {
+                Debug.log(TestCase.BACKPACK, "Deserialized itemstack: " + result);
+            }
 
             if (result.getType().isAir()) {
                 Slimefun.logger()
